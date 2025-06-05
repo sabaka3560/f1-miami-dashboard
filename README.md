@@ -323,8 +323,8 @@ Please use GitHub Issues for:
 
 ## 📞 Contact
 
-- **GitHub**: [@yourusername](https://github.com/sabaka3560)
-- **Email**: your.email@example.com
+- **GitHub**: [@sabaka3560](https://github.com/sabaka3560)
+- **Email**: tanmaybohra@outlook.de
 
 ---
 
