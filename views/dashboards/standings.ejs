@@ -1,0 +1,59 @@
+<%- include('../partials/header') %>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">
+            <span class="title-icon">📊</span>
+            STANDINGS COMMAND
+        </h1>
+        <p class="dashboard-subtitle">Championship battle with Miami energy</p>
+    </div>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error-card">
+            <p>⚠️ <%= error %></p>
+        </div>
+    <% } %>
+
+    <div class="standings-container">
+        <% if (standings && standings.length > 0) { %>
+            <div class="standings-table">
+                <div class="table-header">
+                    <div class="header-pos">POS</div>
+                    <div class="header-driver">DRIVER</div>
+                    <div class="header-team">TEAM</div>
+                    <div class="header-points">POINTS</div>
+                    <div class="header-wins">WINS</div>
+                </div>
+                <% standings.forEach((standing, index) => { %>
+                    <div class="standing-row" style="animation-delay: <%= index * 0.05 %>s">
+                        <div class="pos-cell">
+                            <span class="position-number">#<%= standing.position %></span>
+                        </div>
+                        <div class="driver-cell">
+                            <span class="driver-name"><%= standing.Driver.givenName %> <%= standing.Driver.familyName %></span>
+                            <span class="driver-code"><%= standing.Driver.code %></span>
+                        </div>
+                        <div class="team-cell">
+                            <span class="team-name"><%= standing.Constructors[0]?.name || 'N/A' %></span>
+                        </div>
+                        <div class="points-cell">
+                            <span class="points-value"><%= standing.points %></span>
+                        </div>
+                        <div class="wins-cell">
+                            <span class="wins-value"><%= standing.wins %></span>
+                        </div>
+                        <div class="row-glow"></div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <div class="no-data">
+                <p>🏁 No standings data available</p>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+

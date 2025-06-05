@@ -1,0 +1,45 @@
+
+<%- include('../partials/header') %>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">
+            <span class="title-icon">🏁</span>
+            CIRCUITS COMMAND
+        </h1>
+        <p class="dashboard-subtitle">Racing circuits with Miami neon styling</p>
+    </div>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error-card">
+            <p>⚠️ <%= error %></p>
+        </div>
+    <% } %>
+
+    <div class="circuits-grid">
+        <% if (circuits && circuits.length > 0) { %>
+            <% circuits.forEach((circuit, index) => { %>
+                <div class="circuit-card" style="animation-delay: <%= index * 0.1 %>s">
+                    <div class="card-glow"></div>
+                    <div class="circuit-info">
+                        <h3 class="circuit-name"><%= circuit.circuitName %></h3>
+                        <div class="circuit-location">
+                            <span class="location-detail">📍 <%= circuit.Location.locality %>, <%= circuit.Location.country %></span>
+                        </div>
+                        <% if (circuit.url) { %>
+                            <a href="<%= circuit.url %>" target="_blank" class="circuit-link">View Details →</a>
+                        <% } %>
+                    </div>
+                    <div class="card-accent"></div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="no-data">
+                <p>🏁 No circuit data available</p>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+

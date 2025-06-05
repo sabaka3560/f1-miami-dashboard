@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">
+            <span class="title-icon">👥</span>
+            DRIVERS COMMAND
+        </h1>
+        <p class="dashboard-subtitle">Current season driver roster with Miami flair</p>
+    </div>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error-card">
+            <p>⚠️ <%= error %></p>
+        </div>
+    <% } %>
+
+    <div class="drivers-grid">
+        <% if (drivers && drivers.length > 0) { %>
+            <% drivers.forEach((driver, index) => { %>
+                <div class="driver-card" style="animation-delay: <%= index * 0.1 %>s">
+                    <div class="card-glow"></div>
+                    <div class="driver-number">#<%= driver.permanentNumber || '?' %></div>
+                    <div class="driver-info">
+                        <h3 class="driver-name"><%= driver.givenName %> <%= driver.familyName %></h3>
+                        <p class="driver-code"><%= driver.code || 'N/A' %></p>
+                        <div class="driver-details">
+                            <span class="detail-item">🎂 Born: <%= driver.dateOfBirth %></span>
+                            <span class="detail-item">🌍 <%= driver.nationality %></span>
+                        </div>
+                    </div>
+                    <div class="card-accent"></div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="no-data">
+                <p>🏁 No driver data available</p>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+
